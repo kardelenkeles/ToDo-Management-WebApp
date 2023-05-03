@@ -5,18 +5,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-    @RequestMapping("say")
-    @ResponseBody
-    public String say(){
-         return "Say something";
-    }
-    @RequestMapping("say-html")
+    /*@RequestMapping("say-html")
     @ResponseBody
     public String sayHtml(){
         StringBuffer sb = new StringBuffer();
         sb.append("<html>");
         sb.append("<head>");
-        sb.append("<title> ToDo App </title>");
+        sb.append("<title>ToDoApp</title>");
         sb.append("</head>");
         sb.append("<body>");
         sb.append("To do list");
@@ -24,5 +19,10 @@ public class Controller {
         sb.append("</html>");
 
         return sb.toString();
+    } */
+    @RequestMapping("jsp")
+    public String jsp(){
+        return "hellojsp";
     }
+
 }
