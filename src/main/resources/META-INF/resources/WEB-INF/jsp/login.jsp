@@ -9,6 +9,5 @@
             Password: <input type="password" name="password">
             <button>Login</button>
         </form>
-
     </body>
 </html>
