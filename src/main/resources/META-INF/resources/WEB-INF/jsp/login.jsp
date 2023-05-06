@@ -3,12 +3,12 @@
         <title>Login Page</title>
     </head>
     <body>
-    <div>
+        <pre>${errorMessage}</pre>
         <form method="post">
-            Email: <input type="text" name="email">
+            Username: <input type="text" name="username">
             Password: <input type="password" name="password">
             <button>Login</button>
         </form>
-    </div>
+
     </body>
 </html>
