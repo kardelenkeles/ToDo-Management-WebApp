@@ -3,6 +3,7 @@
         <title>Home page</title>
     </head>
     <body>
-        <div>${username}</div>
+        <div>Welcome ${username}</div>
+        <h2><a href="list-todos"> Manage </a> your todos</h2>
     </body>
 </html>
