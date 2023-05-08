@@ -13,6 +13,7 @@
     <form:form method="post" modelAttribute="todo">
         Description: <label>
         <form:input type="text" path="desc" required="required"/>
+        <form:errors path="desc" cssClass="text-warning"/>
         <form:input type="hidden" path="id" required="required"/>
         <form:input type="hidden" path="done" required="required"/>
     </label>

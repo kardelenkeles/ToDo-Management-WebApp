@@ -1,8 +1,10 @@
 package todo;
 
+import jakarta.validation.Valid;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,13 +32,16 @@ public class ToDoController {
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
     public String showTodoPage(ModelMap model){
         String username = (String) model.get("name");
-        ToDoPage todo = new ToDoPage(0, username, "",
+        ToDoPage todo = new ToDoPage(0, username, "Default Desc",
                 LocalDate.now().plusYears(1),false);
         model.put("todo", todo);
         return "todo";
     }
     @RequestMapping(value = "add-todo", method = RequestMethod.POST)
-    public String addNewTodo(ModelMap model, ToDoPage todo){
+    public String addNewTodo(ModelMap model, @Valid ToDoPage todo, BindingResult result){
+        if(result.hasErrors()){
+            return "todo";
+        }
         String username = (String) model.get("name");
         toDoService.addTodo(username, todo.getDesc(),
                 LocalDate.now().plusYears(1),false);
