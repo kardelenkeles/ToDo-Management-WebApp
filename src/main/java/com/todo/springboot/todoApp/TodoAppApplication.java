@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan("controller")
 @ComponentScan("login")
+@ComponentScan("todo")
 public class TodoAppApplication {
 
 	public static void main(String[] args) {
