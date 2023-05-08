@@ -28,13 +28,18 @@ public class ToDoController {
         return "listTodos";
     }
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
-    public String showTodoPage(){
+    public String showTodoPage(ModelMap model){
+        String username = (String) model.get("name");
+        ToDoPage todo = new ToDoPage(0, username, "",
+                LocalDate.now().plusYears(1),false);
+        model.put("todo", todo);
         return "todo";
     }
     @RequestMapping(value = "add-todo", method = RequestMethod.POST)
-    public String addNewTodo(@RequestParam String desc, ModelMap model){
+    public String addNewTodo(ModelMap model, ToDoPage todo){
         String username = (String) model.get("name");
-        toDoService.addTodo(username, desc, LocalDate.now().plusYears(1),false);
+        toDoService.addTodo(username, todo.getDesc(),
+                LocalDate.now().plusYears(1),false);
         return "redirect:list-todos";
     }
 }
