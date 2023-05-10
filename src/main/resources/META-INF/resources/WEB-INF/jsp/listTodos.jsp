@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@include file="common/navigation.jspf" %>
+<%@include file="common/header.jspf"%>
 <html>
 <head>
     <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
@@ -23,8 +23,8 @@
                 <th>${todo.desc}</th>
                 <th>${todo.targetDate}</th>
                 <th>${todo.done}</th>
-                <th><a href="delete-todo?id=${todo.id}" class="btn btn-danger">Delete</a> </th>
-                <th><a href="update-todo?id=${todo.id}" class="btn btn-success">Update</a> </th>
+                <th><a href="delete-todo?id=${todo.id}" class="btn btn-danger">Delete</a></th>
+                <th><a href="update-todo?id=${todo.id}" class="btn btn-success">Update</a></th>
             </tr>
         </c:forEach>
     </table>
@@ -33,4 +33,5 @@
     <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 </div>
 </body>
+<%@include file="common/footer.jspf" %>
 </html>
