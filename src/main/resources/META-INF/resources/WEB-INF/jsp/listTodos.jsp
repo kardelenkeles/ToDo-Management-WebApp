@@ -15,6 +15,8 @@
             <th>Description</th>
             <th>Target Date</th>
             <th>Is Done?</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <c:forEach items="${todos}" var="todo">
@@ -23,10 +25,12 @@
                 <th>${todo.desc}</th>
                 <th>${todo.targetDate}</th>
                 <th>${todo.done}</th>
+                <th><a href="delete-todo?id=${todo.id}" class="btn btn-danger">Delete</a> </th>
+                <th><a href="update-todo?id=${todo.id}" class="btn btn-success">Update</a> </th>
             </tr>
         </c:forEach>
     </table>
-    <a href="add-todo" class="btn btn-success">Add ToDo</a>
+    <a href="add-todo" class="btn btn-info">Add ToDo</a>
     <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 </div>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -42,6 +43,27 @@ public class ToDoController {
         String username = (String) model.get("name");
         toDoService.addTodo(username, todo.getDesc(),
                 LocalDate.now().plusYears(1),false);
+        return "redirect:list-todos";
+    }
+    @RequestMapping("delete-todo")
+    public String deleteTodo(@RequestParam int id){
+        toDoService.deleteById(id);
+        return "redirect:list-todos";
+    }
+    @RequestMapping(value = "update-todo", method = RequestMethod.GET)
+    public String showUpdateTodo(@RequestParam int id, ModelMap model){
+        Todo todo = toDoService.findById(id);
+        model.addAttribute("todo",todo);
+        return "todo";
+    }
+    @RequestMapping(value = "update-todo", method = RequestMethod.POST)
+    public String updateTodo(ModelMap model, @Valid Todo todo, BindingResult result){
+        if(result.hasErrors()){
+            return "todo";
+        }
+        String username = (String) model.get("name");
+        todo.setUsername(username);
+        toDoService.updateTodo(todo);
         return "redirect:list-todos";
     }
 }
