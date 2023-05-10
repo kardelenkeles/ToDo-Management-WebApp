@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
-public class ToDoPage {
+public class Todo {
     private int id;
     private String username;
     @Size(min=10, message = "Enter at least 10 characters")
@@ -12,7 +12,7 @@ public class ToDoPage {
     private LocalDate targetDate;
     private boolean done;
 
-    public ToDoPage(int id, String username, String desc, LocalDate targetDate, boolean done) {
+    public Todo(int id, String username, String desc, LocalDate targetDate, boolean done) {
         super();
         this.id = id;
         this.username = username;
