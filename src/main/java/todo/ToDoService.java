@@ -21,7 +21,7 @@ public class ToDoService {
     }
 
     public static List<Todo> findByUsername(String username) {
-        Predicate<? super Todo> predicate
+        Predicate<? super Todo> predicate 
                 = todo -> todo.getUsername().equalsIgnoreCase(username);
         return todos.stream().filter(predicate).toList();
     }
