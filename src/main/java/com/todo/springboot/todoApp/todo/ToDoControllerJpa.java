@@ -18,19 +18,16 @@ import java.util.List;
 @SessionAttributes("name")
 public class ToDoControllerJpa {
 
-    public ToDoControllerJpa(ToDoService toDoService, TodoRepository todoRepository) {
+    public ToDoControllerJpa(TodoRepository todoRepository) {
         super();
-        this.toDoService = toDoService;
         this.todoRepository = todoRepository;
     }
-
-    private ToDoService toDoService;
     private TodoRepository todoRepository;
     @RequestMapping("list-todos")
     public String listTodos(ModelMap model) {
         String username = getLoggedInUsername(model);
 
-        List<Todo> todos = todoRepository.findByUsername("username");
+        List<Todo> todos = todoRepository.findByUsername(username);
         model.addAttribute("todos", todos);
 
         return "listTodos";
@@ -51,20 +48,23 @@ public class ToDoControllerJpa {
             return "todo";
         }
         String username = getLoggedInUsername(model);
-        toDoService.addTodo(username, todo.getDesc(),
-                todo.getTargetDate(), false);
+        todo.setUsername(username);
+        todoRepository.save(todo);
+        //toDoService.addTodo(username, todo.getDesc(),
+        //        todo.getTargetDate(), todo.isDone());
+
         return "redirect:list-todos";
     }
 
     @RequestMapping("delete-todo")
     public String deleteTodo(@RequestParam int id) {
-        toDoService.deleteById(id);
+        todoRepository.deleteById(id);
         return "redirect:list-todos";
     }
 
     @RequestMapping(value = "update-todo", method = RequestMethod.GET)
     public String showUpdateTodo(@RequestParam int id, ModelMap model) {
-        Todo todo = toDoService.findById(id);
+        Todo todo = todoRepository.findById(id).get();
         model.addAttribute("todo", todo);
         return "todo";
     }
@@ -76,7 +76,7 @@ public class ToDoControllerJpa {
         }
         String username = getLoggedInUsername(model);
         todo.setUsername(username);
-        toDoService.updateTodo(todo);
+        todoRepository.save(todo);
         return "redirect:list-todos";
     }
     private String getLoggedInUsername(ModelMap model){
