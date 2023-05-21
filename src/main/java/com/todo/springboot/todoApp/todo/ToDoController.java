@@ -1,4 +1,4 @@
-package todo;
+package com.todo.springboot.todoApp.todo;
 
 import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
 import java.util.List;

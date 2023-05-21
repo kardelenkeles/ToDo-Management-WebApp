@@ -1,4 +1,4 @@
-package todo;
+package com.todo.springboot.todoApp.todo;
 
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package controller;
+package com.todo.springboot.todoApp.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
