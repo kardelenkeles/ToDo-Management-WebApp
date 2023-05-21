@@ -14,10 +14,12 @@ public class ToDoService {
     private static int todosCount = 0;
 
     static {
-        todos.add(new Todo(++todosCount, "kardelenkeles", "Istanbul",
+        todos.add(new Todo(++todosCount, "kardelenkeles", "Istanbul1",
                 LocalDate.now().plusYears(1), false));
-        todos.add(new Todo(++todosCount, "kardelenkeles", "Istanbul",
+        todos.add(new Todo(++todosCount, "kardelenkeles", "Istanbul2",
                 LocalDate.now().plusYears(2), false));
+        todos.add(new Todo(++todosCount, "kardelenkeles", "Istanbul3",
+                LocalDate.now().plusYears(1), false));
     }
 
     public static List<Todo> findByUsername(String username) {
