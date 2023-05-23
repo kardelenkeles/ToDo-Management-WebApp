@@ -3,10 +3,12 @@ package com.todo.springboot.todoApp.todo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
+@Table(name = "T_TODO")
 @Entity(name = "todo")
 public class Todo {
     public Todo(int id, String username, String desc, LocalDate targetDate, boolean done) {
